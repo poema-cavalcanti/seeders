@@ -27,7 +27,7 @@ const S3_IMAGE_END_ID = 69;
 const USERS = 10000000;
 
 let restaurantIndex = 1;
-let imageId = 0;
+let imageId = 1;
 let image = undefined;
 let record = undefined;
 let id = 0;
@@ -64,7 +64,6 @@ function write() {
     if (restaurantIndex % 100000 === 0) {
       printProgress((restaurantIndex * 100) / NUM_RESTAURANTS, imageId + 1);
     }
-
     let numImages = faker.random.number({min: MIN_IMAGES, max: MAX_IMAGES});
 
     for (let j = 0; j < numImages; j += 1) {
@@ -89,7 +88,7 @@ function write() {
       }
       image.push(score.valueOf()); // helpfulScore
 
-      image.push(faker.random.number(USERS)); // userId
+      image.push(faker.random.number({min: 1, max: USERS})); // userId
 
       record = [];
       record.push(JSON.parse(JSON.stringify(image)));
@@ -97,17 +96,11 @@ function write() {
 
       imageId += 1;
     }
-
     restaurantIndex += 1;
   }
   if (restaurantIndex < (NUM_RESTAURANTS + 1)) {
-    // had to stop early!
     // write some more once it drains
     imagesFile.once('drain', write);
-
   }
-  // imagesFile.end();
 }
-
 write();
-

@@ -61,9 +61,9 @@ function write() {
 
     user.push(faker.random.number(MAX_STARS)); // stars
 
-    let elite = false;
+    let elite = 0;
     if (faker.random.number(10) === 10) {
-      elite = true;
+      elite = 1;
     }
     user.push(elite); // elite
 
