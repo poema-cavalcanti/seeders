@@ -36,20 +36,20 @@ let score = 0;
 
 const imagesCSVify = createStringifier({
   header: [
-    {id: 'imageId', title: 'imageId'},
-    {id: 'imageURL', title: 'imageURL'},
-    {id: 'caption', title: 'caption'},
-    {id: 'date', title: 'date'},
-    {id: 'businessId', title: 'businessId'},
-    {id: 'helpfulScore', title: 'helpfulScore'},
-    {id: 'userId', title: 'userId'},
+    ['imageId'],
+    ['imageURL'],
+    ['caption'],
+    ['date'],
+    ['businessId'],
+    ['helpfulScore'],
+    ['userId'],
   ]
 });
 
 const metadataCSVify = createStringifier({
   header: [
-    {id: 'imageId', title: 'imageId'},
-    {id: 'helpfulScore', title: 'helpfulScore'},
+    ['imageId'],
+    ['helpfulScore'],
   ]
 });
 

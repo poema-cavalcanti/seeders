@@ -54,10 +54,11 @@ CREATE TABLE users (
 -- ---
 -- Foreign Keys and Indexes
 -- ---
+ALTER TABLE images ADD FOREIGN KEY (userID) REFERENCES users (id);
 ALTER TABLE votes ADD FOREIGN KEY (userID) REFERENCES users (id);
 ALTER TABLE votes ADD FOREIGN KEY (imageID) REFERENCES images (id);
-ALTER TABLE images ADD FOREIGN KEY (userID) REFERENCES users (id);
 
+ALTER TABLE images ADD INDEX (businessID);
 ALTER TABLE images ADD INDEX (userID);
 ALTER TABLE votes ADD INDEX (imageID);
 
